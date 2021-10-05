@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+    <p > In programming, very often we need to ask the computer to check conditional statements. Checking those statements our machine takes decisions. Conditional statements play a great role in programming and about all computer programmers have surely used these things. To write conditional statements we use <strong > if statements </strong > in programs. <strong > 'if' </strong > executes the specified statement if the condition is true. </p >
+        <h3 > <i > <strong > <u > Logical Operators: </u > </strong > </i > </h3 >
+        <p > MATLAB offers two types of logical operators. One of them operates on every element of an array or matrix(<strong > Element-wise </strong > ) and the other operates on scalar and logical operations(<strong > Short-circuit </strong > ). The operators and their uses within if statement are discussed below with examples: </p >
+        <h4 > <i > <strong > <u > 1. Short-circuit operator AND(&amp;&amp;) : </u > </strong > </i > </h4 > <blockquote >
+        <p > <i > <strong > <u > Syntax: </u > </strong > </i > </p >
+        <p > <strong > expression1 &amp;&amp; expression2 </strong > </p >
+        <p > <strong > <u > Description: </u > </strong > </p >
+        <p > With logical short-circuiting, the second operand, expression2, is evaluated only when the result is not fully determined by the first operand, expression1. For logical AND (&amp;&amp;) operation, the expression2 will not be evaluated if expression1 is false(0). Each expression must evaluate to a logical result i.e false or true. </p >
+        <p > <strong > <u > Return value for several cases: </u > </strong > </p >
+        <figure class="table" > <table > <thead > <tr > <th > Return value of expression1 </th > <th > Return value of expression1 </th > <th > Return value of (expression1 &amp;&amp; expression2) </th > </tr > </thead > <tbody > <tr > <td > <p style="text-align:center;" > True </p >
+        </td > <td > <p style="text-align:center;" > True </p >
+        </td > <td > <p style="text-align:center;" > True </p >
+        </td > </tr > <tr > <td > <p style="text-align:center;" > True </p >
+        </td > <td > <p style="text-align:center;" > False </p >
+        </td > <td > <p style="text-align:center;" > False </p >
+        </td > </tr > <tr > <td > <p style="text-align:center;" > False </p >
+        </td > <td > <p style="text-align:center;" > True </p >
+        </td > <td > <p style="text-align:center;" > False </p >
+        </td > </tr > <tr > <td > <p style="text-align:center;" > False </p >
+        </td > <td > <p style="text-align:center;" > False </p >
+        </td > <td > <p style="text-align:center;" > False </p >
+        </td > </tr > </tbody > </table > </figure > </blockquote >
+        <p > <i > <strong > <u > Example of AND ( &amp;&amp; ) operator: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]% Assigning logical values to
+        % expression1 and expression2.
+        expression1 = true;
+        expression2 = false;
+        % ============================================
+        % Return value of expression1 &amp;&amp; expression1:
+        % true &amp;&amp; true -&gt; true(1)
+        disp(expression1 &amp;&amp; expression1);
+        %==============================================
+        % Return value of expression1 &amp;&amp; expression1:
+        % true &amp;&amp; false -&gt; false(0)
+        disp(expression1 &amp;&amp; expression2);
+        %==============================================
+        % Return value of expression2 &amp;&amp; expression1:
+        % false &amp;&amp; true -&gt; false(0)
+        disp(expression2 &amp;&amp; expression1);
+        %==============================================
+        % Return value of expression2 &amp;&amp; expression2:
+        % false &amp;&amp; flase -&gt; false(0)
+        disp(expression2 &amp;&amp; expression2);[/sourcecode][tabbyending]
+        <blockquote >
+        <p > <strong > Output: </strong > </p >
+        <p > &gt;&gt; gfg1 </p >
+        <p > 1 </p >
+        <p > 0 </p >
+        <p > 0 </p >
+        <p > 0 </p >
+        </blockquote >
+        <blockquote >
+        <p > <i > <strong > <u > Syntax of AND within if statement: </u > </strong > </i > </p >
+        <p > <strong > if( expression1 &amp;&amp; expression2) statement(s) end </strong > </p >
+        <p > <strong > Note: The above 'if' statement executes if and only if expression1 and expression2 both are true. If one of them becomes false, the 'if' statement does not execute. </strong > </p >
+        </blockquote > <h4 > <i > <strong > <u > Example: </u > </strong > </i > </h4 >
+        [tabby title="Matlab"][sourcecode language="matlab"]a = 3; % assigning a value to a
+        b = 4; % assigning a value to b
+        if((a &gt;= 3) &amp;&amp; (b == 4)) %both conditions are true.
+        disp('Working of short-circuit AND operator.');
+        end
+        if(a &lt; 3 &amp;&amp; b == 4) %first condition is false.
+        % So the second condition is not evaluated
+        % and it returns logical value -&gt; false.
+        disp('GFG');
+        else
+        % this else part will execute
+        % as the if statement fails to execute.
+        disp('Geeksforgeeks');
+        end[/sourcecode][tabbyending]
+        <p > In the above example the first if statement executes because the two expressions inside the if statement are both true. But for the second case, expression1 i.e a &lt; 3 is not true so it does not executes. </p >
+        <p > <strong > <u > Output: </u > </strong > </p >
+        <p > &gt;&gt; gfg </p >
+        <p > Working of short-circuit AND operator. </p >
+        <p > Geeksforgeeks </p >
+        <h4 > <strong > </strong > <i > <strong > <u > 2. Short-circuit operator or( || ) : </u > </strong > </i > <strong > </strong > </h4 > <blockquote >
+        <p > <strong > <u > Syntax: </u > </strong > </p >
+        <p > <strong > expression1 || expression2 </strong > </p >
+        <p > <strong > <u > Description: </u > </strong > </p >
+        <p > <strong > With logical short-circuiting, the second operand, expression2, is evaluated only when the result is not fully determined by the first operand, expression1. For logical OR(||) operation, the expression2 will not be evaluated if expression1 is true(1). Each expression must evaluate to a logical result i.e false or true. </strong > </p >
+        <p > <strong > <u > Return value for several cases: </u > </strong > </p >
+        <figure class="table" > <table > <thead > <tr > <th > Return value of expression1 </th > <th > Return value of expression1 </th > <th > Return value of (expression1 || expression2) </th > </tr > </thead > <tbody > <tr > <td > True </td > <td > True </td > <td > True </td > </tr > <tr > <td > True </td > <td > False </td > <td > True </td > </tr > <tr > <td > False </td > <td > True </td > <td > True </td > </tr > <tr > <td > False </td > <td > False </td > <td > False </td > </tr > </tbody > </table > </figure > </blockquote >
+        <p > <i > <strong > <u > Example of OR( || ) operator: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]% Assigning logical value to
+        % expression1 and expression2.
+        expression1 = true;
+        expression2 = false;
+        % ============================================
+        % Return value of expression1 || expression1:
+        % true || true -&gt; true(1)
+        disp(expression1 || expression1);
+        %==============================================
+        % Return value of expression1 || expression1:
+        % true || false -&gt; true(1)
+        disp(expression1 || expression2);
+        %==============================================
+        % Return value of expression2 || expression1:
+        % false || true -&gt; true(1)
+        disp(expression2 || expression1);
+        %==============================================
+        % Return value of expression2 || expression2:
+        % false || flase -&gt; false(0)
+        disp(expression2 || expression2);[/sourcecode][tabbyending]
+        <p > <i > <strong > <u > Output: </u > </strong > </i > </p >
+        <p > &gt;&gt; gfg1 </p >
+        <p > 1 </p >
+        <p > 1 </p >
+        <p > 1 </p >
+        <p > 0 </p >
+        <blockquote >
+        <p > <strong > <u > Syntax: </u > </strong > </p >
+        <p > <strong > if( expression1 || expression2) statement(s) end </strong > </p >
+        <p > <strong > Note: The above 'if' statement executes if either of the expressions (expression1 or expression2) is true. If both of them become false, the 'if' statement does not execute. </strong > </p >
+        </blockquote >
+        <p > <i > <strong > <u > Example: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]a = 3; % Assigning values to
+        b = 4; % a and b.
+        if((a &gt;= 3) || (b == 4)) % both conditions -&gt; true
+        % So the if statement will execute.
+        disp('Working of short-circuit OR operator.');
+        end
+        if(a &lt; 3 || b == 4) % first condition -&gt; false
+        % Second condition -&gt; true and returns -&gt; true
+        % the if statement will execute.
+        disp('GFG');
+        else
+        disp('Geeksforgeeks');
+        end
+        if(a &lt; 3 || b &gt; 4) % both conditions -&gt; false
+        % So the if statement will not execute.
+        disp('It is not a matlab program.');
+        else
+        % This else part will execute.
+        disp('Both conditions are false inside if.');
+        end[/sourcecode][tabbyending]
+        <p > For the first 'if' statement both the conditions are true and for the second, one of the expressions(first expression) is true but for the last one both of the expressions are false. So, the first and second 'if' statement executes but the last one failed to execute. </p >
+        <p > <strong > Output: </strong > </p >
+        <p > &gt;&gt; gfg </p >
+        <p > Working of short-circuit OR operator. </p >
+        <p > GFG </p >
+        <p > Both conditions are false inside if. </p >
+        <h4 > <i > <strong > <u > 3. Logical operations AND, OR, NOT, XOR( &amp;, |, ~, xor ): </u > </strong > </i > </h4 > <blockquote >
+        <p > <strong > <u > Syntax: </u > </strong > </p >
+        <p > <strong > if(value1 (any logical operation) value2) statement(s) </strong > </p >
+        <p > <strong > end </strong > </p >
+        <p > <strong > Note: The above 'if' statement executes if the logical operation of value1 and value2 returns anything other than false and '0' and otherwise the statement does not execute. </strong > </p >
+        </blockquote > <ul > <li > <i > <strong > <u > AND( &amp; ): </u > </strong > </i > </li > </ul > <blockquote >
+        <p > <i > <strong > <u > Syntax: </u > </strong > </i > </p >
+        <p > <strong > if(value1 &amp; value2) statement(s) </strong > </p >
+        <p > <strong > end </strong > </p >
+        <p > <strong > Note: True /1 -&gt; when value1 &amp; value2 are both true or 1. </strong > </p >
+        <p > <strong > False/ 0 -&gt; when either of value1 and value 2 or both are false(0). </strong > </p >
+        </blockquote >
+        <p > <i > <strong > <u > Example: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]flaga = true;
+        flagb = false;
+        a = 1;
+        b = 0;
+        if(a &amp; b) % result -&gt; 0
+        disp('Executed first if statement.');
+        else
+        disp('Does not execute first if statement.');
+        end
+        if(a &amp; a) % result -&gt; 1
+        disp('Executed second if statement');
+        else
+        disp('Does not execute second if statement.');
+        end
+        if(b &amp; b) % result -&gt; 0
+        disp('Executed third if statement');
+        else
+        disp('Does not execute third if statement.');
+        end
+        if(flaga &amp; flagb) % result -&gt; 0
+        disp('Executed fourth if statement');
+        else
+        disp('Does not execute fourth if statement.');
+        end
+        if(flaga &amp; flaga) % result -&gt; 1
+        disp('Executed fifth if statement');
+        else
+        disp('Does not execute fifth if statement.');
+        end
+        if(flaga &amp; a) % result -&gt; 1
+        disp('Executed sixth if statement');
+        else
+        disp('Does not execute sixth if statement.');
+        end[/sourcecode][tabbyending]
+        <p > <strong > Output: </strong > </p >
+        <p > &gt;&gt; gfg </p >
+        <p > Does not execute first if statement. </p >
+        <p > Executed second if statement </p >
+        <p > Does not execute third if statement. </p >
+        <p > Does not execute fourth if statement. </p >
+        <p > Executed fifth if statement </p >
+        <p > Executed sixth if statement </p >
+        <ul > <li > <i > <strong > <u > OR( | ): </u > </strong > </i > </li > </ul > <blockquote >
+        <p > <strong > <u > Syntax: </u > </strong > </p >
+        <p > <strong > if( value1 | value2) statement(s) end </strong > </p >
+        <p > <strong > Note: Flase /0 -&gt; when value1 &amp; value2 are both false or 0. </strong > </p >
+        <p > <strong > True/ 1 -&gt; when either of value1 and value 2 or both are true(1). </strong > </p >
+        </blockquote >
+        <p > <i > <strong > <u > Example: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]flaga = true;
+        flagb = false;
+        a = 1;
+        b = 0;
+        if(a | b) % result -&gt; 1
+        disp('Executed first if statement.');
+        else
+        disp('Does not execute first if statement.');
+        end
+        if(a | a) % result -&gt; 1
+        disp('Executed second if statement');
+        else
+        disp('Does not execute second if statement.');
+        end
+        if(b | b) % result -&gt; 0
+        disp('Executed third if statement');
+        else
+        disp('Does not execute third if statement.');
+        end
+        if(flaga | flagb) % result -&gt; 1
+        disp('Executed fourth if statement');
+        else
+        disp('Does not execute fourth if statement.');
+        end
+        if(flaga | flaga) % result -&gt; 1
+        disp('Executed fifth if statement');
+        else
+        disp('Does not execute fifth if statement.');
+        end
+        if(flaga | a) % result -&gt; 1
+        disp('Executed sixth if statement');
+        else
+        disp('Does not execute sixth if statement.');
+        end[/sourcecode][tabbyending]
+        <p > <strong > Output: </strong > </p >
+        <p > &gt;&gt; gfg </p >
+        <p > Executed first if statement. </p >
+        <p > Executed second if statement </p >
+        <p > Does not execute third if statement. </p >
+        <p > Executed fourth if statement </p >
+        <p > Executed fifth if statement </p >
+        <p > Executed sixth if statement </p >
+        <ul > <li > <i > <strong > <u > NOT ( ~ ): </u > </strong > </i > </li > </ul > <blockquote >
+        <p > <strong > <u > Syntax: </u > </strong > </p >
+        <p > <strong > if( ~ expression) statement(s) end </strong > </p >
+        <p > <strong > Note: Flase /0 -&gt; expression is true or 1. </strong > </p >
+        <p > <strong > True/ 1 -&gt; when expression is false or 0. </strong > </p >
+        </blockquote >
+        <p > <i > <strong > <u > Example: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]flaga = true;
+        flagb = false;
+        a = 1;
+        b = 0;
+        if(~a) % result -&gt; 0
+        disp('Executed first if statement.');
+        else
+        disp('Does not execute first if statement.');
+        end
+        if(~b) % result -&gt; 1
+        disp('Executed second if statement');
+        else
+        disp('Does not execute second if statement.');
+        end
+        if(~flaga) % result -&gt; 0
+        disp('Executed third if statement');
+        else
+        disp('Does not execute third if statement.');
+        end
+        if(~flagb) % result -&gt; 1
+        disp('Executed fourth if statement');
+        else
+        disp('Does not execute fourth if statement.');
+        end[/sourcecode][tabbyending]
+        <p > <strong > Output: </strong > </p >
+        <p > &gt;&gt; gfg </p >
+        <p > Does not execute first if statement. </p >
+        <p > Executed second if statement </p >
+        <p > Does not execute third if statement. </p >
+        <p > Executed fourth if statement </p >
+        <ul > <li > <i > <strong > <u > XOR ( xor ): </u > </strong > </i > </li > </ul > <blockquote >
+        <p > <strong > <u > Syntax: </u > </strong > </p >
+        <p > <strong > if( xor(expression1, expression2)) statement(s) end </strong > </p >
+        <p > <strong > Note: Flase /0 -&gt; when expression1 and expression2 are equal. </strong > </p >
+        <p > <strong > True/ 1 -&gt; when expression1 and expression2 are opposite. </strong > </p >
+        </blockquote >
+        <p > <i > <strong > <u > Example: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]flaga = true;
+        flagb = false;
+        a = 1;
+        b = 0;
+        if(xor(a, a)) % result -&gt; 0
+        disp('Executed first if statement.');
+        else
+        disp('Does not execute first if statement.');
+        end
+        if(xor(a, b)) % result -&gt; 1
+        disp('Executed second if statement');
+        else
+        disp('Does not execute second if statement.');
+        end
+        if(xor(flaga, flaga)) % result -&gt; 0
+        disp('Executed third if statement');
+        else
+        disp('Does not execute third if statement.');
+        end
+        if(xor(flaga, flagb)) % result -&gt; 1
+        disp('Executed fourth if statement');
+        else
+        disp('Does not execute fourth if statement.');
+        end[/sourcecode][tabbyending]
+        <p > <strong > Output: </strong > </p >
+        <p > &gt;&gt; gfg </p >
+        <p > Does not execute first if statement. </p >
+        <p > Executed second if statement </p >
+        <p > Does not execute third if statement. </p >
+        <p > Executed fourth if statement </p >
+        <h4 > <i > <strong > <u > 4. all() , any() and islogical() inside if statement: </u > </strong > </i > </h4 > <ul > <li > <i > <strong > <u > all() : </u > </strong > </i > This function determines if all array elements are nonzero or true. It returns true if all array elements are nonzero and returns false otherwise. </li > </ul >
+        <p > <i > <strong > <u > Example: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]a = [1; 1; 2; -1];
+        b = [0; 0; 0];
+        if(all(a)) % returns -&gt; true
+        disp('all array elements are nonzero.')
+        else
+        disp("Not all array elements are nonzero.")
+        end
+        if(all(b)) % returns -&gt; false
+        disp('all array elements are nonzero.')
+        else
+        disp("Not all array elements are nonzero.")
+        end[/sourcecode][tabbyending]
+        <p > <strong > Output: </strong > </p >
+        <p > &gt;&gt; gfg </p >
+        <p > all array elements are nonzero. </p >
+        <p > Not all array elements are nonzero. </p >
+        <ul > <li > <i > <strong > <u > any() : </u > </strong > </i > This function returns true if any of the array elements are nonzero and otherwise returns false. </li > </ul >
+        <p > <i > <strong > <u > Example: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]a = [1; 1; 2; -1];
+        b = [0; 0; 1];
+        if(any(a)) % returns -&gt; true
+        disp('any of array elements are nonzero.')
+        else
+        disp("Not any array elements are nonzero.")
+        end
+        if(any(b)) % returns -&gt; true
+        disp('any of array elements are nonzero.')
+        else
+        disp("Not any array elements are nonzero.")
+        end[/sourcecode][tabbyending]
+        <p > <strong > Output: </strong > </p >
+        <p > &gt;&gt; gfg </p >
+        <p > all array elements are nonzero. </p >
+        <p > all array elements are nonzero. </p >
+        <ul > <li > <i > <strong > <u > islogical(): </u > </strong > </i > <i > <strong > islogical(A) </strong > </i > returns true if A is a logical array and false otherwise. <i > <strong > islogical </strong > </i > also returns true if A is an instance of a class that is derived from the logical class. </li > </ul >
+        <p > <i > <strong > <u > Examples: </u > </strong > </i > </p >
+        [tabby title="Matlab"][sourcecode language="matlab"]a = [1; 1; 2; -1];
+        b = [false; false; true];
+        if(islogical(a)) % returns -&gt; false
+        disp('all array elements are logical.');
+        else
+        disp('Not all array elements are logical.');
+        end
+        if(islogical(b)) % returns -&gt; true
+        disp('all array elements are logical.');
+        else
+        disp('Not all array elements are logical.');
+        end
+        if(islogical(logical(a))) %returns -&gt; true
+        disp('all array elements are logical.');
+        else
+        disp('Not all array elements are logical.');
+        end[/sourcecode][tabbyending]
+        <p > logical() creates a logical array from the original array a. </p >
+        <p > <strong > Output: </strong > </p >
+        <p > &gt;&gt; gfg </p >
+        <p > Not all array elements are logical. </p >
+        <p > all array elements are logical. </p >
+        <p > all array elements are logical. </p >
+        
+</html>
